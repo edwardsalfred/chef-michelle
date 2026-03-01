@@ -105,8 +105,16 @@ const ChefChelleHomepage = () => {
     },
   ];
 
-  const navLinks = ["Home", "Events", "Kitchen & More", "About", "Booking", "Bread Pudding", "Testimonials", "FAQ"];
-
+  const navLinks = [
+    { name: "Home", href: "#top" },
+    { name: "Events", href: "#" },
+    { name: "Kitchen & More", href: "#kitchen" },
+    { name: "About", href: "#about" },
+    { name: "Booking", href: "#faq" },
+    { name: "Bread Pudding", href: "#pudding" },
+    { name: "Testimonials", href: "#test" },
+    { name: "FAQ", href: "#faq" }
+  ];
   const animClass = (id) =>
     visibleSections.has(id) ? "opacity-1 translate-y-0" : "opacity-0 translate-y-8";
 
@@ -1038,10 +1046,10 @@ const ChefChelleHomepage = () => {
 
       {/* NAVIGATION */}
       <nav className={`nav ${scrollY > 60 ? "scrolled" : ""}`}>
-        <a href="#" className="nav-logo">Chef Chelle</a>
+        <a href="#top" className="nav-logo">Chef Chelle</a>
         <ul className="nav-links">
           {navLinks.slice(0, 6).map((link) => (
-            <li key={link}><a href="#">{link}</a></li>
+            <li key={link.name}><a href={link.href}>{link.name}</a></li>
           ))}
         </ul>
         <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
@@ -1052,7 +1060,7 @@ const ChefChelleHomepage = () => {
       {menuOpen && (
         <div className="mobile-menu" onClick={() => setMenuOpen(false)}>
           {navLinks.map((link) => (
-            <a key={link} href="#">{link}</a>
+            <a key={link.name} href={link.href}>{link.name}</a>
           ))}
         </div>
       )}
@@ -1111,7 +1119,9 @@ const ChefChelleHomepage = () => {
             <p className="section-text" style={{ marginBottom: "40px" }}>
               From intimate private dinners to grand wedding celebrations, every dish is crafted with meticulous attention to detail and an undeniable passion for creating memorable moments.
             </p>
-            <img src="/api/placeholder/180/60" alt="Chef Chelle Signature" style={{ opacity: 0.6, filter: 'invert(1)' }} />
+            <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2rem", color: "var(--gold)", fontStyle: "italic", marginTop: "20px" }}>
+              Chef Chelle
+            </div>
           </div>
           <div className="about-image">
             <img src={chefPhoto} alt="Chef Chelle in the kitchen" className="about-photo" />
